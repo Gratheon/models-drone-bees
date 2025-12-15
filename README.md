@@ -18,4 +18,4 @@ Based on the results of the model selection stage, **YOLOv10** was selected for 
 Dataset source:
 https://scholarsjunction.msstate.edu/gri-publications/4/
 
-This project is released under the **MIT License**.
+This project is released under the MIT License.
