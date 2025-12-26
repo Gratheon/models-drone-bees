@@ -18,4 +18,67 @@ Based on the results of the model selection stage, **YOLOv10** was selected for 
 Dataset source:
 https://scholarsjunction.msstate.edu/gri-publications/4/
 
+### Inference
+
+Two options for running inference on custom images:
+
+#### Option 1: CLI Script
+```bash
+python inference.py path/to/image.jpg
+python inference.py path/to/image.jpg --conf 0.5 --imgsz 1280
+python inference.py folder/ --output results/
+```
+
+Arguments:
+- `--model`: Path to model weights (default: best trained model)
+- `--imgsz`: Inference image size (default: 1280)
+- `--conf`: Confidence threshold (default: 0.25)
+- `--output`: Output directory for results
+- `--no-save`: Don't save annotated images
+- `--show`: Display results
+
+#### Option 2: HTTP Server
+Start the server:
+```bash
+python server.py
+```
+
+The server runs on port 8751 by default. Upload images via:
+- Web form: `http://localhost:8751`
+- API endpoint: POST multipart/form-data to `http://localhost:8751` with `file` field
+
+Example curl:
+```bash
+curl -X POST -F "file=@image.jpg" http://localhost:8751
+```
+
+Environment variables:
+- `PORT`: Server port (default: 8751)
+- `MODEL_WEIGHTS`: Path to model weights
+- `CONF_THRESHOLD`: Confidence threshold (default: 0.25)
+- `IOU_THRESHOLD`: IoU threshold (default: 0.7)
+- `IMG_SIZE`: Image size for inference (default: 1280)
+- `MAX_DETECTIONS`: Maximum detections (default: 300)
+
+Response format:
+```json
+{
+  "message": "File processed successfully",
+  "result": [
+    {
+      "x1": 100.5,
+      "y1": 200.3,
+      "x2": 150.7,
+      "y2": 250.8,
+      "confidence": 0.85,
+      "class": 0,
+      "class_name": "worker"
+    }
+  ],
+  "count": 1,
+  "worker_count": 1,
+  "drone_count": 0
+}
+```
+
 This project is released under the MIT License.
