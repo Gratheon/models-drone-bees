@@ -1,11 +1,11 @@
 start:
-	docker compose -f docker-compose.dev.yml up --build
+	COMPOSE_PROJECT_NAME=gratheon docker compose -f docker-compose.dev.yml up --build
 
 start-prod:
-	docker compose -f docker-compose.prod.yml up --build
+	COMPOSE_PROJECT_NAME=gratheon docker compose -f docker-compose.prod.yml up --build
 
 stop:
-	docker compose -f docker-compose.dev.yml down
+	COMPOSE_PROJECT_NAME=gratheon docker compose -f docker-compose.dev.yml down
 
 stop-prod:
 	docker compose -f docker-compose.prod.yml down
