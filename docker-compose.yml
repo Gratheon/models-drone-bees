@@ -1,0 +1,17 @@
+services:
+  models-drone-bees:
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+    environment:
+      - ENV_ID=prod
+      - PORT=8751
+      - CONF_THRESHOLD=0.25
+      - IOU_THRESHOLD=0.7
+      - IMG_SIZE=1280
+      - MAX_DETECTIONS=300
+    ports:
+      - 8751:8751
+    restart: always
+    network_mode: host
+
