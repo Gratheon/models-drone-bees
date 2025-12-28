@@ -1,7 +1,7 @@
 # Gratheon / models-drone-bees
 
 Machine learning microservice for automatic detection and classification of **worker bees and drone bees** in beehive frame images.
-Original work done by as [a project for Machine Learning course in the University of Tartu (2025)](https://github.com/KreeteKuusk/Bee-type-detection-ML2025)
+Original work done as [a project for Machine Learning course in the University of Tartu (2025)](https://github.com/KreeteKuusk/Bee-type-detection-ML2025)
 
 ## Overview
 
