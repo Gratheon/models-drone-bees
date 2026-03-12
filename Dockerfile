@@ -4,7 +4,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libglib2.0-0 \
     libsm6 \
     libxext6 \
-    libxrender-dev \
+    libxrender1 \
     libgomp1 \
     libgl1 \
     && rm -rf /var/lib/apt/lists/*
@@ -12,7 +12,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 WORKDIR /app
 
 COPY requirements.txt /app/requirements.txt
-RUN pip3 install --no-cache-dir -r /app/requirements.txt
+RUN pip3 install --no-cache-dir --index-url https://download.pytorch.org/whl/cpu \
+    torch==2.5.1 torchvision==0.20.1 && \
+    pip3 install --no-cache-dir -r /app/requirements.txt
 
 COPY server.py /app/server.py
 COPY project_beedetection/yolov10x_augm_pat30/weights/best.pt /app/weights/best.pt
@@ -27,4 +29,3 @@ ENV MAX_DETECTIONS=300
 EXPOSE 8751
 
 CMD ["python3", "/app/server.py"]
-
