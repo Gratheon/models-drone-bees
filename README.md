@@ -125,6 +125,12 @@ just logs
 
 The service will be available at `http://localhost:8751`
 
+The service uses the shared Python logger directly from GitHub via [`requirements.txt`](/Users/artjom/git/gratheon/models-drone-bees/requirements.txt):
+
+```txt
+gratheon-log-lib @ https://github.com/Gratheon/log-lib-py/archive/03b30ba.zip
+```
+
 ### Environment Variables
 
 Configure the service using these environment variables (set in `docker-compose.yml`):
@@ -253,4 +259,3 @@ This project is released under a dual-license model:
 The project uses Ultralytics YOLOv10, which is available under:
 - **GPL-3.0 License**: For open-source use
 - **Enterprise License**: For commercial product development (see [Ultralytics Licensing](https://ultralytics.com/license))
-
