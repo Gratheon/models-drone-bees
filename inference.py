@@ -2,9 +2,7 @@
 import os
 import sys
 import argparse
-from pathlib import Path
 from ultralytics import YOLO
-import cv2
 
 def run_inference(model_path, image_path, output_dir=None, imgsz=1280, conf=0.25, save=True, show=False):
     if not os.path.exists(model_path):
@@ -32,8 +30,8 @@ def run_inference(model_path, image_path, output_dir=None, imgsz=1280, conf=0.25
         show=show
     )
 
-    for idx, result in enumerate(results):
-        print(f"\n=== Detection Results ===")
+    for result in results:
+        print("\n=== Detection Results ===")
         print(f"Image: {result.path}")
         print(f"Image shape: {result.orig_shape}")
 
@@ -60,7 +58,7 @@ def run_inference(model_path, image_path, output_dir=None, imgsz=1280, conf=0.25
             if save_path:
                 print(f"\nAnnotated image saved to: {save_path}")
             else:
-                print(f"\nAnnotated image saved to: runs/detect/predict/")
+                print("\nAnnotated image saved to: runs/detect/predict/")
 
     return results
 

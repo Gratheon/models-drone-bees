@@ -15,13 +15,13 @@ def test_server(image_path, server_url="http://localhost:8751"):
 
     if response.status_code == 200:
         data = response.json()
-        print(f"\n=== Summary ===")
+        print("\n=== Summary ===")
         print(f"Total detections: {data['count']}")
         print(f"Worker bees: {data['worker_count']}")
         print(f"Drone bees: {data['drone_count']}")
 
         if data['result']:
-            print(f"\nDetections:")
+            print("\nDetections:")
             for i, det in enumerate(data['result'], 1):
                 print(f"  [{i}] {det['class_name']}: confidence={det['confidence']:.3f}")
 
